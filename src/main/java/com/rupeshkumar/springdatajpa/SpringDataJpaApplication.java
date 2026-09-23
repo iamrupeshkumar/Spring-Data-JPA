@@ -45,10 +45,15 @@ public class SpringDataJpaApplication {
 		 */
 		 
 		
-		Optional<User> byId = userBean.findById(102);
-		if(byId.isPresent()) {
-			System.out.println(byId.get());
-		}
+		/*
+		 * Optional<User> byId = userBean.findById(102); if(byId.isPresent()) {
+		 * System.out.println(byId.get()); }
+		 */
+		
+		Iterable<User> allById = userBean.findAllById(Arrays.asList(101,103,104));
+		allById.forEach(user -> {
+			System.out.println(user);
+		});
 	}
 
 }
