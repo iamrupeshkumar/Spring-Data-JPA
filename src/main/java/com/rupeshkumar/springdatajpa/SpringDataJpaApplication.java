@@ -50,8 +50,13 @@ public class SpringDataJpaApplication {
 		 * System.out.println(byId.get()); }
 		 */
 		
-		Iterable<User> allById = userBean.findAllById(Arrays.asList(101,103,104));
-		allById.forEach(user -> {
+		/*
+		 * Iterable<User> allById = userBean.findAllById(Arrays.asList(101,103,104));
+		 * allById.forEach(user -> { System.out.println(user); });
+		 */
+		
+		Iterable<User> all = userBean.findAll();
+		all.forEach(user -> {
 			System.out.println(user);
 		});
 	}
