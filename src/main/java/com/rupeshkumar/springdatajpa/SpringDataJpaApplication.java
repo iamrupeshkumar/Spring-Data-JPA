@@ -61,12 +61,17 @@ public class SpringDataJpaApplication {
 		 */
 		
 		
-		  long count = userBean.count(); 
-		  System.out.println(count);
-		 
+		/*
+		 * long count = userBean.count(); System.out.println(count);
+		 * 
+		 * 
+		 * boolean existsById = userBean.existsById(102);
+		 * System.out.println(existsById);
+		 */
 		
-		boolean existsById = userBean.existsById(102);
-		System.out.println(existsById);
+		userBean.deleteById(104);
+		
+		userBean.deleteAllById(Arrays.asList(102,103));
 		
 		
 		
