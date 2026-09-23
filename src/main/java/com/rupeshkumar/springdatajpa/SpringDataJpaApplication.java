@@ -55,10 +55,21 @@ public class SpringDataJpaApplication {
 		 * allById.forEach(user -> { System.out.println(user); });
 		 */
 		
-		Iterable<User> all = userBean.findAll();
-		all.forEach(user -> {
-			System.out.println(user);
-		});
+		/*
+		 * Iterable<User> all = userBean.findAll(); all.forEach(user -> {
+		 * System.out.println(user); });
+		 */
+		
+		
+		  long count = userBean.count(); 
+		  System.out.println(count);
+		 
+		
+		boolean existsById = userBean.existsById(102);
+		System.out.println(existsById);
+		
+		
+		
 	}
 
 }
