@@ -1,6 +1,7 @@
 package com.rupeshkumar.springdatajpa;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.boot.SpringApplication;
@@ -36,6 +37,7 @@ public class SpringDataJpaApplication {
 		 */
 		
 		
+		
 		/*
 		 * User u2 = new User(102, "Akash", "Male", 23, "India"); User u3 = new
 		 * User(103, "Sumit", "Male", 29, "India"); User u4 = new User(104, "John",
@@ -43,6 +45,7 @@ public class SpringDataJpaApplication {
 		 * 
 		 * userBean.saveAll(Arrays.asList(u2,u3,u4));
 		 */
+		 
 		 
 		
 		/*
@@ -69,12 +72,17 @@ public class SpringDataJpaApplication {
 		 * System.out.println(existsById);
 		 */
 		
-		userBean.deleteById(104);
+		/*
+		 * userBean.deleteById(104);
+		 * 
+		 * userBean.deleteAllById(Arrays.asList(102,103));
+		 */
+		//======================== findBy =============================
 		
-		userBean.deleteAllById(Arrays.asList(102,103));
-		
-		
-		
+		List<User> byCountry = userBean.findByCountry("INDIA");
+		byCountry.forEach(user -> {
+			System.out.println(user);
+		});
 	}
 
 }
