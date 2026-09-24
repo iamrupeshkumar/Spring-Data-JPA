@@ -8,6 +8,10 @@ import com.rupeshkumar.springdatajpa.entity.User;
 
 public interface UserRepository extends CrudRepository<User, Integer>{
 	
+	//SELECT * FROM user_master where user_country=?
 	public List<User> findByCountry(String cname);
+	
+	//SELECT * FROM user_master where user_age=?
+	public List<User> findByAge(Integer age);
 
 }
