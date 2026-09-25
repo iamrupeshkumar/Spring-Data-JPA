@@ -88,6 +88,17 @@ public class SpringDataJpaApplication {
 		byAge.forEach(user -> {
 			System.out.println(user);
 		});
+		
+		List<User> byAgeG = userBean.findByAgeGreaterThanEqual(29);
+		byAgeG.forEach(user -> {
+			System.out.println(user);
+		});
+		
+		List<User> byCountryIn = userBean.findByCountryIn(Arrays.asList("INDIA","USA"));
+		byCountryIn.forEach(user -> {
+			System.out.println(user);
+		});
+		
 	}
 
 }
