@@ -99,6 +99,16 @@ public class SpringDataJpaApplication {
 			System.out.println(user);
 		});
 		
+		List<User> byCountryAndAge = userBean.findByCountryAndAge("INDIA", 25);
+		byCountryAndAge.forEach(user -> {
+			System.out.println(user);
+		});
+		
+		List<User> byCountryAndAgeGender = userBean.findByCountryAndAgeAndGender("INDIA", 25, "Male");
+		byCountryAndAgeGender.forEach(user -> {
+			System.out.println(user);
+		});
+		
 	}
 
 }
