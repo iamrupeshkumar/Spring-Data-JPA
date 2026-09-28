@@ -7,14 +7,22 @@ import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.Sort;
 
 import com.rupeshkumar.springdatajpa.entity.Player;
 import com.rupeshkumar.springdatajpa.entity.User;
 import com.rupeshkumar.springdatajpa.repository.PlayerRepository;
 import com.rupeshkumar.springdatajpa.repository.UserRepository;
+import com.rupeshkumar.springdatajpa.repository.UserRepository2;
 
 @SpringBootApplication
 public class SpringDataJpaApplication {
+
+	private final UserRepository2 userRepository2;
+
+	SpringDataJpaApplication(UserRepository2 userRepository2) {
+		this.userRepository2 = userRepository2;
+	}
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringDataJpaApplication.class, args);
@@ -38,13 +46,16 @@ public class SpringDataJpaApplication {
 		
 		
 		
-		/*
-		 * User u2 = new User(102, "Akash", "Male", 23, "India"); User u3 = new
-		 * User(103, "Sumit", "Male", 29, "India"); User u4 = new User(104, "John",
-		 * "Male", 32, "USA");
-		 * 
-		 * userBean.saveAll(Arrays.asList(u2,u3,u4));
-		 */
+		
+//		  User u2 = new User(105, "Prakash", "Male", 23, "India"); 
+//		  User u3 = new  User(106, "Olivia", "Female", 24, "Canada"); 
+//		  User u4 = new User(107, "Johny", "Male", 28, "France");
+//		  User u5 = new User(108, "Ganesh", "Male", 45, "India"); 
+//		  User u6 = new  User(109, "Alex", "Male", 24, "Germany"); 
+//		  User u7 = new User(110, "Tony", "Male", 35, "USA");
+//		  
+//		  userBean.saveAll(Arrays.asList(u5,u6,u7));
+		 
 		 
 		 
 		
@@ -132,13 +143,23 @@ public class SpringDataJpaApplication {
 			System.out.println(user);
 		});
 	
+		//###########################################################################
+		System.out.println("############### JpaRepository ######################");
 		
 		
 		
+		UserRepository2 userRepository = context.getBean(UserRepository2.class);
 		
+		// sorting
+		List<User> allUsersSorted = userRepository.findAll(Sort.by("age").ascending());
+		allUsersSorted.forEach(user -> {
+			System.out.println(user);
+		});
 		
-		
-		
+		List<User> allUsersSortedDesc = userRepository.findAll(Sort.by("userName","age").descending());
+		allUsersSortedDesc.forEach(user -> {
+			System.out.println(user);
+		});
 		
 	}
 
