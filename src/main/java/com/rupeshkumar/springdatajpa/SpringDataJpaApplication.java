@@ -109,6 +109,37 @@ public class SpringDataJpaApplication {
 			System.out.println(user);
 		});
 		
+		//####################################################################
+		System.out.println("########### Custom Queries ############");
+		
+		List<User> users = userBean.getAllUsersHql();
+		users.forEach(user -> {
+			System.out.println(user);
+		});
+		
+		List<User> usersSql = userBean.getAllUserSql();
+		usersSql.forEach(user -> {
+			System.out.println(user);
+		});
+		
+		List<User> allUsersByCountryHql = userBean.getAllUsersByCountryHql("USA");
+		allUsersByCountryHql.forEach(user -> {
+			System.out.println(user);
+		});
+		
+		List<User> allUsersByCountryAndAge = userBean.getAllUsersByCountryAndAge("India", 29);
+		allUsersByCountryAndAge.forEach(user -> {
+			System.out.println(user);
+		});
+	
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
