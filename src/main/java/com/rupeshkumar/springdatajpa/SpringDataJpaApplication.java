@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -175,6 +176,16 @@ public class SpringDataJpaApplication {
 			System.out.println(user);
 		});
 		
+		// QBE (Query By Example)
+		User entity = new User();
+		entity.setCountry("Canada");
+		entity.setAge(23);
+		
+		Example<User> ex = Example.of(entity);
+		List<User> qbeUsers = userRepository.findAll(ex);
+		qbeUsers.forEach(user -> {
+			System.out.println(user);
+		});
 		
 	}
 
