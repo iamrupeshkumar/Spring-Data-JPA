@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import com.rupeshkumar.springdatajpa.entity.Player;
@@ -160,6 +162,19 @@ public class SpringDataJpaApplication {
 		allUsersSortedDesc.forEach(user -> {
 			System.out.println(user);
 		});
+		
+		// Pagination
+		int pageSize = 3;
+		int pageNo = 1;
+		PageRequest pr = PageRequest.of(pageNo-1, pageSize);
+		Page<User> pageData = userRepository.findAll(pr);
+		int totalPages = pageData.getTotalPages();
+		System.out.println("Total pages : "+totalPages);
+		List<User> pUsers = pageData.getContent();
+		pUsers.forEach(user -> {
+			System.out.println(user);
+		});
+		
 		
 	}
 
